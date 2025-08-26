@@ -18,10 +18,10 @@ class GradientDescent:
             slope_m = 0
             slope_b = 0
             for i in range(n):
-                predict = self.m*X[i] + self.b
+                predict = self.m * X[i] + self.b
                 error = y[i] - predict
-                slope_m += (-2/n)*X[i]*error
-                slope_b += (-2/n)*error
+                slope_m += (-2/n) * X[i]*error
+                slope_b += (-2/n) * error
             self.m -= self.learning_rate * slope_m        
             self.b -= self.learning_rate * slope_b
             
