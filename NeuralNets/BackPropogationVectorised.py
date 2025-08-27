@@ -10,13 +10,13 @@ X = np.array([[0.5], [0.2], [0.8]])
 Y = np.array([[1], [0], [1]])        
 
 
-input_size = 1
+input_Size = 1
 hidden1_size = 2
 hidden2_size = 2
 output_size = 1
 
 np.random.seed(42)
-W1 = np.random.randn(input_size, hidden1_size) * 0.1
+W1 = np.random.randn(input_Size, hidden1_size) * 0.1
 b1 = np.zeros((1, hidden1_size))
 
 W2 = np.random.randn(hidden1_size, hidden2_size) * 0.1
