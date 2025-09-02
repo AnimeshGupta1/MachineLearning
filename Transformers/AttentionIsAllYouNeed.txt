@@ -1,0 +1,57 @@
+- Encoder
+    - Consists of 6 identical layers
+
+- Each input is called a token, as it can be a mix of words, word fragments and symbols.
+
+- To encode a word (Word Embedding)
+    - Put one in the input corresponding to that particular word
+    - Put zero in rest others
+    - Weights are determined using Backpropogation
+
+- Positional Embeddings
+    - Use alternating sine and cosine squiggles
+    - Add positional values to word Embeddings
+
+- Let's say we have 2 sentences let's go and to go
+- Our input is lets to go
+
+- Self Attention
+    - This calculates how similar the current word is to all other words
+    - Multiply the positional encodings by a pair of weights and add them up   
+        - It helps get input from all other words, and helps give each word context
+    - Repeat this step for as many positional encodings you created
+    - This will be known as Query values
+    - We create Key values by again multiplying the values of let's and go
+    - We calculate the similarity of let's query using the key of lets and go
+    - Then we take out percentages, of how much one word effects the original one
+    - We use softmax and take out percentage for encodings
+    - Then we create Value that is multiplied with the percentages, add scaled values together
+        - To repeat the same process for other words we just need to create Query matrices
+    - Now we have obtained the self attention values
+    - We take the position encoded values and add them to the self attention values
+        - This makes it easier to train the network and are called as Residual Connection values
+
+- Features of self attention
+    - Encode words into numbers
+    - Encode the positions of the words
+    - Encode relationships among the words
+    - Relatively and easily train in parallel
+
+- Decoder
+    - Creating encodings for the output vocabulary
+    - Calculate Query, Key and Value numbers for <EOS> and calculate it's Self Attention
+    - Add Residual Connections
+
+- Encoder-Decoder Attention
+    - Create Query for <EOS> token in the Decoder
+    - Create Key for Encoder words Lets, go
+    - Compute the similarity b/w both
+    - Utilise softmax to figure out percentages of words to be used
+    - Add Residual Connections
+        - These allow Encoder-Decoder to focus on relationship b/w ouput words and input words
+        - Without having to preserve the Self Attention or Word and Position encodings
+    - Now we have 2 values representing <EOS>
+    - Using weights, biases and these 2 values calculate the probability of the 4 words
+
+- Decoder stops when it gets <EOS>
+
